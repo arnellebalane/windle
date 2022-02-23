@@ -14389,50 +14389,8 @@
                     s = this.boardState[this.rowIndex];
                   if (((e = s), !Oa.includes(e) && !Ma.includes(e)))
                     return a.setAttribute('invalid', ''), void this.addToast('Not in word list');
-                  if (this.hardMode) {
-                    var t = (function (e, a, s) {
-                        if (!e || !a || !s) return { validGuess: !0 };
-                        for (var t = 0; t < s.length; t++)
-                          if (s[t] === Ha && e[t] !== a[t])
-                            return {
-                              validGuess: !1,
-                              errorMessage: ''.concat(Da(t + 1), ' letter must be ').concat(a[t].toUpperCase()),
-                            };
-                        for (var n = {}, o = 0; o < s.length; o++)
-                          [Ha, Ra].includes(s[o]) && (n[a[o]] ? (n[a[o]] += 1) : (n[a[o]] = 1));
-                        var r = e.split('').reduce(function (e, a) {
-                          return e[a] ? (e[a] += 1) : (e[a] = 1), e;
-                        }, {});
-                        for (var i in n)
-                          if ((r[i] || 0) < n[i])
-                            return { validGuess: !1, errorMessage: 'Guess must contain '.concat(i.toUpperCase()) };
-                        return { validGuess: !0 };
-                      })(s, this.boardState[this.rowIndex - 1], this.evaluations[this.rowIndex - 1]),
-                      n = t.validGuess,
-                      o = t.errorMessage;
-                    if (!n) return a.setAttribute('invalid', ''), void this.addToast(o || 'Not valid in hard mode');
-                  }
                   var r = (function (e, a) {
-                    for (
-                      var s = Array(a.length).fill(Na),
-                        t = Array(a.length).fill(!0),
-                        n = Array(a.length).fill(!0),
-                        o = 0;
-                      o < e.length;
-                      o++
-                    )
-                      e[o] === a[o] && n[o] && ((s[o] = Ha), (t[o] = !1), (n[o] = !1));
-                    for (var r = 0; r < e.length; r++) {
-                      var i = e[r];
-                      if (t[r])
-                        for (var l = 0; l < a.length; l++) {
-                          var d = a[l];
-                          if (n[l] && i === d) {
-                            (s[r] = Ra), (n[l] = !1);
-                            break;
-                          }
-                        }
-                    }
+                    var s = Array(a.length).fill(Ha);
                     return s;
                   })(s, this.solution);
                   (this.evaluations[this.rowIndex] = r),
@@ -15070,7 +15028,7 @@
       '\n    <div class="graph-container">\n      <div class="guess"></div>\n      <div class="graph">\n        <div class="graph-bar">\n          <div class="num-guesses">\n        </div>\n      </div>\n      </div>\n    </div>\n';
     var Bs = document.createElement('template');
     Bs.innerHTML =
-      '\n  <div class="countdown">\n    <h1>Next WORDLE</h1>\n    <div id="timer">\n      <div class="statistic-container">\n        <div class="statistic timer">\n          <countdown-timer></countdown-timer>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class="share">\n    <button id="share-button">\n      Share <game-icon icon="share"></game-icon>\n    </button>\n  </div>\n';
+      '\n  <div class="countdown">\n    <h1>Next WINDLE</h1>\n    <div id="timer">\n      <div class="statistic-container">\n        <div class="statistic timer">\n          <countdown-timer></countdown-timer>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class="share">\n    <button id="share-button">\n      Share <game-icon icon="share"></game-icon>\n    </button>\n  </div>\n';
     var Gs = {
         currentStreak: 'Current Streak',
         maxStreak: 'Max Streak',
@@ -15150,7 +15108,7 @@
                             o = e.isWin,
                             r = JSON.parse(window.localStorage.getItem(j)),
                             i = JSON.parse(window.localStorage.getItem(S)),
-                            l = 'Wordle '.concat(s);
+                            l = 'Windle '.concat(s);
                           (l += ' '.concat(o ? t : 'X', '/').concat(6)), n && (l += '*');
                           var d = '';
                           return (
